@@ -1,33 +1,45 @@
-
-// products
 class Products {
-  final int id = 0;
+  final int id;
   final String name;
   final String description;
   final double price;
   
-// constructor
   Products({
+    required this.id,
     required this.name,
     required this.description,
     required this.price,
   });
 
-// constructor, if values is nullable
-  Products copyWith(String? name, String? description, double? price,) {
+  factory Products.fromJson(Map<String, dynamic> json) {
     return Products(
-      name: name ?? this.name,
-      description: description ?? this.description,
-      price: price ?? this.price,
+      id: json['id'] as int? ?? 0,
+      name: json['name'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
-// constructor, with json
-  Products fromJson(Map<dynamic, dynamic> json) {
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'price': price,
+    };
+  }
+
+  Products copyWith({
+    int? id,
+    String? name,
+    String? description,
+    double? price,
+  }) {
     return Products(
-      name: json["name"],
-      description: json["description"],
-      price: json["price"]
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
     );
   }
 }

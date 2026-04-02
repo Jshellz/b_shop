@@ -1,21 +1,30 @@
-// category
 import 'package:bsop/data/models/products.dart';
 
 class Category {
   final String title;
-  final Products products;
+  final List<Products> products;
 
-// constructor
   Category({
     required this.title,
     required this.products
   });
 
-// constructor, if values is nullable
-  Category copyWith(String? title, Products? products) {
+  Category copyWith({
+      String? title,
+      List<Products>? products,
+  }) {
+      return Category(
+        title: title ?? this.title,
+        products: products ?? this.products,
+    );
+  }
+
+  factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
-      title: title ?? this.title,
-      products: products ?? this.products,
+      title: json['title'] as String? ?? '',
+      products: (json['products'] as List<dynamic>?)
+              ?.map((item) => Products.fromJson(item as Map<String, dynamic>))
+              .toList() ?? [],
     );
   }
 }
