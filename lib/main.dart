@@ -1,3 +1,5 @@
+import 'package:bsop/view/catalog_screen.dart';
+import 'package:bsop/view/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: ,
+      title: 'BShop',
+      home: Scaffold(
+        body: CatalogScreen(),
+      ),
     );
   }
 }
