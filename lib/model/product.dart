@@ -1,11 +1,11 @@
 class Product {
-  final int id;
+  final String id;
   final String name;
   final String description;
   final double price;
   final String imageUrl;
   final String category;
-  final bool isInStock;
+  final bool isInStock = false;
   
   Product({
     required this.id,
@@ -13,8 +13,7 @@ class Product {
     required this.description,
     required this.price,
     required this.imageUrl, 
-    required this.category, 
-    required this.isInStock,
+    required this.category,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -25,7 +24,7 @@ class Product {
       price: json['price'].toDouble(),
       imageUrl: json['imageUrl'],
       category: json['category'],
-      isInStock: json['isInStock'] ?? true,
+      // isInStock: json['isInStock'] ?? true,
     );
   }
 }
