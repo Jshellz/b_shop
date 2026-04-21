@@ -12,6 +12,4 @@ class User {
     required this.numbers,
     required this.avatar,
   });
-
-  
 }
